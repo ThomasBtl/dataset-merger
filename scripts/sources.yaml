@@ -1,0 +1,517 @@
+---
+  #EXCEL FILE
+  0 :
+    type: "frame"
+    source_type: "xls"
+    outer_group_on : "ins"
+    path: "../data-sources/DBREF-L05-2022-TAB-B-2-FR.xlsx"
+    look_in:
+      - "DBREF-L05-2022-TAB-B-2" : "A, E, H, I, J, K, M, P, Q, R, U, X, AA, AF, AG, AI, AU, AV, AZ, BA, BC"
+    hierarchy:
+      - "agriculture"
+    options:
+      skiprows: 
+        - 1
+        - 14
+      columns_rename:
+        - "ins"
+        - "SAU"
+        - "supFroment"
+        - "supOrge"
+        - "supMais"
+        - "supTriticale"
+        - "supBetteraves"
+        - "supColzNav"
+        - "supPDT"
+        - "supLegumineuse"
+        - "supMaisFourrager"
+        - "supLegumeAir"
+        - "supFruit"
+        - "supFruitAir"
+        - "supCultPerma"
+        - "supLegumeSerre"
+        - "nbVacheLait"
+        - "nbVacheAllaitante"
+        - "nbPorc"
+        - "nbVolaille"
+        - "nbPouletChair"
+  1 :
+    type: "frame"
+    source_type: "xls"
+    outer_group_on : "ins"
+    path: "../data-sources/Donnees_Portail.xlsx"
+    look_in: 
+      - "Portail" : "A, P, R, T"
+    hierarchy:
+      - inondation
+    options:
+      skiprows: 2
+      columns_rename :
+        "Portail":
+          "ComCodeIns" : "ins"
+  2 :
+    type: "frame"
+    source_type: "xls"
+    inner_group_on : "ComNom"
+    outer_group_on : "ins"
+    path: "../data-sources/ECL.xlsx"
+    look_in:
+      - "CARTE01" : "A, B, E, L, N, G, M"
+      - "CARTE02" : "B, M, P, E, G, I"
+    hierarchy:
+      - inondation
+    options:
+      skiprows: 2
+      columns_rename:
+        "CARTE01":
+          "ComCodeIns" : "ins"
+          "(%) de bâtiments à usage commercial, bureaux ou services du territoire situés en aléa d'inondation" : "pcrCommBurServInondation"
+          "(%) de bâtiments à usage industriel ou artisanal du territoire situés en aléa d'inondation" : "pcrIndusArtiInondation"
+          "(%) de bâtiments de commerce et grandes surfaces situés en aléa d'inondation" : "pcrCommGSInondation"
+        "CARTE02" :
+          "% bâtiments résidentiels situés en zone d'aléa d'inondation" : "pcrResiInondation"
+          "nombre total de bâtiments résidentiels situés en zone en zone d'aléa d'inondation" : "nbResiInondation"
+          "EtabAinees_Alea": "nbEtabAineesAlea"
+          "Hopital_Alea": "nbHopitalAlea"
+          "PetiteEnfance_Alea": "nbPetiteEnfanceAlea"
+  3 :
+    type: "frame"
+    source_type: "xls"
+    inner_group_on : "ins"
+    outer_group_on : "ins"
+    path: "../data-sources/ECL.xlsx"
+    look_in:
+      - "CARTE10" : "B, D"
+      - 6 : "C, J, O, N"
+    hierarchy:
+      - chaleur
+    options:
+      skiprows: 2
+      columns_rename:
+        "CARTE10" :
+          "ComCodeIns" : "ins"
+          "Hopital" : "nbHopitalHautImper"
+        6 : 
+          "ComCodeIns" : "ins"
+          "% de batiments résidentiels de bâti continu dense et très dense hors aires d'influence des EV mais compris dans des zones à fort coefficient d'imperméabilisation" : "pcrResiDenseHAIEV"
+          "nombre d'établissements destinés à l'accueil de la petite enfance situées dans des zones à fort coefficient d'imperméabilisation" : "nbCrecheHautImper"
+          "nombre des maisons de repos situées dans des zones à fort coefficient d'imperméabilisation" : "nbEHPADHautImper"
+  4 : 
+    type: "cells"
+    source_type: "xls"
+    path : "../data-sources/lait.xls"
+    look_in: 
+      - "FR" : "N"
+    rows: 
+      - 3
+      - 31
+    hierarchy:
+      - "agriculture"
+    options:
+      title_row_index: 2
+      columns_rename:
+        - "productionLaitTonneBE"
+        - "consommationLaitKGHBE"
+      transpose: true
+  5 :
+    type: "cells"
+    source_type: "xls"
+    path : "../data-sources/viande.xls"
+    look_in:
+      - "FR" : "M"
+    rows : 
+      - 3
+      - 14
+    hierarchy:
+      - "agriculture"
+    options:
+      title_row_index: 2
+      columns_rename:
+        - "productionViandeTonneBE"
+        - "consommationViandeKGHBE"
+      transpose: true
+  6 :
+    type: "cells"
+    source_type: "xls"
+    path : "../data-sources/fruit_legume.xls"
+    look_in: 
+      - "FR" : "K" 
+    rows : 
+      - 34
+      - 76
+      - 46
+      - 94
+    hierarchy:
+      - "agriculture"
+    options:
+      title_row_index: 2
+      columns_rename:
+        - "productionFruitTonneBE"
+        - "productionLegumeTonneBE"
+        - "consommationFruitKGHBE"
+        - "consommationLegumesKGHBE"
+      transpose: true
+  7 :
+    type: "cells"
+    source_type: "xls"
+    path : "../data-sources/oeuf.xls"
+    look_in: 
+      - "FR" : "O" 
+    rows : 
+      - 8
+      - 36
+    hierarchy:
+      - "agriculture"
+    options:
+      title_row_index: 2
+      columns_rename:
+        - "productionOeufx1000piecesBE"
+        - "consommationOeufKGHBE"
+      transpose: true
+  8 :
+    type: "cells"
+    source_type: "xls"
+    path : "../data-sources/huile.xls"
+    look_in: 
+      - "FR" : "F" 
+    rows : 
+      - 3
+    hierarchy:
+      - "agriculture"
+    options:
+      title_row_index: 2
+      columns_rename:
+        - "productionHuileBE"
+      transpose: true
+  9 :
+    type: "cells"
+    source_type: "xls"
+    path : "../data-sources/pdt.xls"
+    look_in: 
+      - "FR" : "AL" 
+    rows : 
+      - 7
+      - 24
+    hierarchy:
+      - "agriculture"
+    options:
+      title_row_index: 5
+      columns_rename:
+        - "productionPdtTonneBE"
+        - "consommationPdtKGHBE"
+      transpose: true
+  # WALSTATS EXCEL
+  10 :
+    type: "frame"
+    source_type: "xls"
+    path : "../data-sources/215700.xlsx"
+    inner_group_on : "ins"
+    outer_group_on : "ins"
+    look_in:
+      - "01-01-2020" : "A, D, E, F, j"
+      - "01-01-2002" : "A, D, E"
+    hierarchy:
+      - artificialisation
+    options:
+      title_row_index: 11
+      columns_rename:
+        "01-01-2020":
+          "Code INS" : "ins"
+          "Part de superficie\nartificialisée" : "partSuperficieArtificalisee2020"
+          "Part de Terrains\nrésidentiels" : "partSuperficieResidentiels2020"
+          "Part de terrains occupés\npar des commerces,\nbureaux et services" : "partCommerce2020"
+          "Part de terrains à usage\nindustriel et artisanal" : "partIndustriel2020"
+        "01-01-2002" :
+          "Code INS" : "ins"
+          "Part de superficie\nartificialisée" : "partSuperficieArtificalisee2002"
+          "Part de Terrains\nrésidentiels" : "partSuperficieResidentiels2002"
+  11 :
+    type: "frame"
+    source_type: "xls"
+    path : "../data-sources/215700.xlsx"
+    inner_group_on : "ins"
+    outer_group_on : "ins"
+    look_in:
+      - "01-01-2020" : "A, N, O, P, R, S"
+      - "01-01-2002" : "A, N, O, P, R, S"
+    hierarchy:
+      - biodiversite
+    options:
+      title_row_index: 11
+      columns_rename:
+        "01-01-2020":
+          "Code INS" : "ins"
+          "Part de terres arables et\ncultures permanentes" : "partTerreArablesEtCulturePermanetes2020"
+          "Part de surfaces\nenherbées et friches\nagricoles" : "partSurfacesEnherbeesEtFrichesAgricoles2020"
+          "Part de forêts" : "partForets2020"
+          "Part de zones humides" : "partZoneHumide2020"
+          "Part de surfaces en eau" : "partSurfaceEau2020"
+        "01-01-2002" :
+          "Code INS" : "ins"
+          "Part de terres arables et\ncultures permanentes" : "partTerreArablesEtCulturePermanetes2002"
+          "Part de surfaces\nenherbées et friches\nagricoles" : "partSurfacesEnherbeesEtFrichesAgricoles2002"
+          "Part de forêts" : "partForets2002"
+          "Part de zones humides" : "partZoneHumide2002"
+          "Part de surfaces en eau" : "partSurfaceEau2002"
+  12 :
+    type: "frame"
+    source_type: "xls"
+    path : "../data-sources/200300.xlsx"
+    inner_group_on : "ins"
+    outer_group_on : "ins"
+    look_in:
+      - "01-01-2022" : "A, D"
+      - "01-01-2021" : "A, D"
+      - "01-01-2020" : "A, D"
+      - "01-01-2019" : "A, D"
+      - "01-01-2018" : "A, D"
+      - "01-01-2017" : "A, D"
+      - "01-01-2016" : "A, D"
+      - "01-01-2015" : "A, D"
+      - "01-01-2014" : "A, D"
+      - "01-01-2013" : "A, D"
+      - "01-01-2012" : "A, D"
+      - "01-01-2011" : "A, D"
+      - "01-01-2010" : "A, D"
+      - "01-01-2009" : "A, D"
+      - "01-01-2008" : "A, D"
+      - "01-01-2007" : "A, D"
+      - "01-01-2006" : "A, D"
+      - "01-01-2005" : "A, D"
+      - "01-01-2004" : "A, D"
+      - "01-07-2003" : "A, D"
+      - "01-01-2002" : "A, D"
+    to_array: true
+    hierarchy:
+      - "population"
+    options:
+      title_row_index: 11
+      columns_rename:
+        "01-01-2022":
+            "Code INS" : "ins"
+            "Total population" : "2022"
+        "01-01-2021":
+          "Code INS" : "ins"
+          "Total population" : "2021"
+        "01-01-2020":
+          "Code INS" : "ins"
+          "Total population" : "2020"
+        "01-01-2019" : 
+          "Code INS" : "ins"
+          "Total population" : "2019"
+        "01-01-2018" : 
+          "Code INS" : "ins"
+          "Total population" : "2018"
+        "01-01-2017" : 
+          "Code INS" : "ins"
+          "Total population" : "2017"
+        "01-01-2016" : 
+          "Code INS" : "ins"
+          "Total population" : "2016"
+        "01-01-2015" : 
+          "Code INS" : "ins"
+          "Total population" : "2015"
+        "01-01-2014" : 
+          "Code INS" : "ins"
+          "Total population" : "2014"
+        "01-01-2013" : 
+          "Code INS" : "ins"
+          "Total population" : "2013"
+        "01-01-2012" : 
+          "Code INS" : "ins"
+          "Total population" : "2012"
+        "01-01-2011" : 
+          "Code INS" : "ins"
+          "Total population" : "2011"
+        "01-01-2010" : 
+          "Code INS" : "ins"
+          "Total population" : "2010"
+        "01-01-2009" : 
+          "Code INS" : "ins"
+          "Total population" : "2009"
+        "01-01-2008" : 
+          "Code INS" : "ins"
+          "Total population" : "2008"
+        "01-01-2007" : 
+          "Code INS" : "ins"
+          "Total population" : "2007"
+        "01-01-2006" : 
+          "Code INS" : "ins"
+          "Total population" : "2006"
+        "01-01-2005" : 
+          "Code INS" : "ins"
+          "Total population" : "2005"
+        "01-01-2004" : 
+          "Code INS" : "ins"
+          "Total population" : "2004"
+        "01-07-2003" : 
+          "Code INS" : "ins"
+          "Total population" : "2003"
+        "01-01-2002" : 
+          "Code INS" : "ins"
+          "Total population" : "2002"
+  13 :
+    type: "frame"
+    source_type: "xls"
+    path : "../data-sources/201001.xlsx"
+    inner_group_on : "ins"
+    outer_group_on : "ins"
+    look_in:
+      - "01-01-2020" : "A, D"
+    hierarchy:
+      - superficie
+    options:
+      title_row_index: 11
+      columns_rename:
+        "01-01-2020" :
+          "Code INS" : "ins"
+          "Superficie en km²" : "superficieKM2"
+  14 :
+    type: "frame"
+    source_type: "xls"
+    path : "../data-sources/223200.xlsx"
+    inner_group_on : "ins"
+    outer_group_on : "ins"
+    look_in:
+      - "01-01-2022" : "A, D"
+      - "01-01-2021" : "A, D"
+      - "01-01-2020" : "A, D"
+      - "01-01-2019" : "A, D"
+      - "01-01-2018" : "A, D"
+      - "01-01-2017" : "A, D"
+      - "01-01-2016" : "A, D"
+      - "01-01-2015" : "A, D"
+      - "01-01-2014" : "A, D"
+      - "01-01-2013" : "A, D"
+      - "01-01-2012" : "A, D"
+      - "01-01-2011" : "A, D"
+      - "01-01-2010" : "A, D"
+      - "01-01-2009" : "A, D"
+      - "01-01-2008" : "A, D"
+      - "01-01-2007" : "A, D"
+      - "01-01-2006" : "A, D"
+      - "01-01-2005" : "A, D"
+      - "01-01-2004" : "A, D"
+      - "01-01-2003" : "A, D"
+      - "01-01-2002" : "A, D"
+    to_array: true
+    hierarchy:
+      - moyTailleMenagesPrives
+    options:
+      title_row_index: 11
+      columns_rename:
+        "01-01-2022":
+            "Code INS" : "ins"
+            "Taille moyenne des\nménages privés" : "2022"
+        "01-01-2021":
+          "Code INS" : "ins"
+          "Taille moyenne des\nménages privés" : "2021"
+        "01-01-2020":
+          "Code INS" : "ins"
+          "Taille moyenne des\nménages privés" : "2020"
+        "01-01-2019" : 
+          "Code INS" : "ins"
+          "Taille moyenne des\nménages privés" : "2019"
+        "01-01-2018" : 
+          "Code INS" : "ins"
+          "Taille moyenne des\nménages privés" : "2018"
+        "01-01-2017" : 
+          "Code INS" : "ins"
+          "Taille moyenne des\nménages privés" : "2017"
+        "01-01-2016" : 
+          "Code INS" : "ins"
+          "Taille moyenne des\nménages privés" : "2016"
+        "01-01-2015" : 
+          "Code INS" : "ins"
+          "Taille moyenne des\nménages privés" : "2015"
+        "01-01-2014" : 
+          "Code INS" : "ins"
+          "Taille moyenne des\nménages privés" : "2014"
+        "01-01-2013" : 
+          "Code INS" : "ins"
+          "Taille moyenne des\nménages privés" : "2013"
+        "01-01-2012" : 
+          "Code INS" : "ins"
+          "Taille moyenne des\nménages privés" : "2012"
+        "01-01-2011" : 
+          "Code INS" : "ins"
+          "Taille moyenne des\nménages privés" : "2011"
+        "01-01-2010" : 
+          "Code INS" : "ins"
+          "Taille moyenne des\nménages privés" : "2010"
+        "01-01-2009" : 
+          "Code INS" : "ins"
+          "Taille moyenne des\nménages privés" : "2009"
+        "01-01-2008" : 
+          "Code INS" : "ins"
+          "Taille moyenne des\nménages privés" : "2008"
+        "01-01-2007" : 
+          "Code INS" : "ins"
+          "Taille moyenne des\nménages privés" : "2007"
+        "01-01-2006" : 
+          "Code INS" : "ins"
+          "Taille moyenne des\nménages privés" : "2006"
+        "01-01-2005" : 
+          "Code INS" : "ins"
+          "Taille moyenne des\nménages privés" : "2005"
+        "01-01-2004" : 
+          "Code INS" : "ins"
+          "Taille moyenne des\nménages privés" : "2004"
+        "01-01-2003" : 
+          "Code INS" : "ins"
+          "Taille moyenne des\nménages privés" : "2003"
+        "01-01-2002" : 
+          "Code INS" : "ins"
+          "Taille moyenne des\nménages privés" : "2002"
+  15 :
+    type: "frame"
+    source_type: "xls"
+    path : "../data-sources/811302.xlsx"
+    inner_group_on : "ins"
+    outer_group_on : "ins"
+    look_in:
+      - "année 2017" : "A, D"
+    hierarchy:
+      - eau
+    options:
+      title_row_index: 11
+      columns_rename:
+        "année 2017" :
+          "Code INS" : "ins"
+          "m3/(compteur an)" : "consommationEau2017"
+  16 :
+    type: "frame"
+    source_type: "xls"
+    inner_group_on : "nom"
+    outer_group_on : "ins"
+    path: "../data-sources/ECL.xlsx"
+    look_in:
+      - "CARTE01" : "A, B"
+      - "CARTE02" : "B"
+    hierarchy:
+      - nom
+    options:
+      skiprows: 2
+      columns_rename:
+        "CARTE01":
+          "ComCodeIns" : "ins"
+          "ComNom" : "nom"
+        "CARTE02" :
+          "ComNom" : "nom"
+  17 :
+    type: "frame"
+    source_type: "xls"
+    path : "../data-sources/223200.xlsx"
+    inner_group_on : "ins"
+    outer_group_on : "ins"
+    look_in:
+      - "01-01-2017" : "A, H"
+    hierarchy:
+      - nbMenagesPrives
+    options:
+      title_row_index: 11
+      columns_rename:
+        "01-01-2017" :
+          "Code INS" : "ins"
+          "Nombre de ménages\nprivés" : "value"
+...

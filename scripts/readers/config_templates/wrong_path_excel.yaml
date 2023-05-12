@@ -1,0 +1,11 @@
+---
+  0:
+    type: "frame"
+    source_type: "xls"
+    outer_merge_on: INS
+    path : "a_path_that_clearly_doesnt_exists"
+    look_in: 
+      - "all" : "INS, Hopital"
+    options:
+      transpose: true
+...
